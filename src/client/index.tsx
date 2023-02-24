@@ -24,9 +24,9 @@ export const DeliciousThemeContext = {
 const content = (
   // @ts-ignore
   <Provider store={store}>
-  <ThemeProvider theme={DeliciousThemeContext}>
-    <MainRouter />
-  </ThemeProvider>
+    <ThemeProvider theme={DeliciousThemeContext}>
+      <MainRouter />
+    </ThemeProvider>
   </Provider>
 );
 

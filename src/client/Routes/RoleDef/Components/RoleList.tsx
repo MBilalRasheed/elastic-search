@@ -53,6 +53,13 @@ class RoleListComponent extends React.Component<RoleListProp, RoleListState> {
   */
   private nestedColumnConfig: Array<{}> = [
     {
+      label: 'Id',
+      key: 'id',
+      className: '',
+      sortBy: 'keyword',
+      style: { width: '160px' },
+    },
+    {
       label: 'Name',
       key: 'name',
       className: '',
@@ -82,7 +89,7 @@ class RoleListComponent extends React.Component<RoleListProp, RoleListState> {
   // function needs to be called on onChange for checkBox
   private bulkOptions = () => {
     return [{
-      content: <Checkbox label={'Show Deleted'} />
+      content: <Checkbox label={'Show Deleted'} onChange={this.showDeletedRowsHandler} />
     }]
   };
 
@@ -110,6 +117,9 @@ class RoleListComponent extends React.Component<RoleListProp, RoleListState> {
     };
   }
 
+  showDeletedRowsHandler = (value: boolean) => {
+    this.props.actions.showDeletedHandler(value)
+  }
   // Callback function when any row gets selected
   handleSelectRowCallback = (val: React.ReactText) => {
     this.setState({ bulkAction: { selectedRow: [...this.state.bulkAction.selectedRow, val] } })
@@ -121,7 +131,13 @@ class RoleListComponent extends React.Component<RoleListProp, RoleListState> {
       dropdownEle: { [currentDropdown]: event.currentTarget as HTMLElement },
     });
   }
+  filterResultsHandler = () => {
+    this.props.actions.filterResultsHandler(this.state.filterConfig.searchKey)
 
+  }
+  setFilterQuery = (val: string) => {
+    this.setState({ filterConfig: { ...this.state.filterConfig, searchKey: val } })
+  }
 
   /**
    * Render the component to the DOM
@@ -176,10 +192,11 @@ class RoleListComponent extends React.Component<RoleListProp, RoleListState> {
 
               <div className={searchFieldStyle}>
                 <TextField
-                  disabled
                   label="Find a Role..."
-                  suffix={<Icon source="search" componentColor="inkLighter"/>}
+                  suffix={<Icon source="search" componentColor="inkLighter" onClick={this.filterResultsHandler.bind} />}
                   value={filterConfig.searchKey}
+                  onChange={this.setFilterQuery}
+                  
                 />
               </div>
 

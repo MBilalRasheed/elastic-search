@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect, DispatchProp, MapDispatchToProps, MapStateToProps } from 'react-redux';
 
 import { ThemeContext } from '../../../Context';
 import RoleListComponent from './RoleList';
@@ -20,6 +20,7 @@ class RoleDefComponent extends React.Component<any> {
   componentDidMount(): void {
     this.props.actions.getRoleList()
   }
+
   render() {
     const { roleDefs } = this.props;
     return (
@@ -30,6 +31,7 @@ class RoleDefComponent extends React.Component<any> {
               <RoleListComponent
                 theme={theme}
                 roleDefs={(roleDefs && roleDefs.length > 0) ? roleDefs : []}
+                actions={this.props.actions}
               />
             )
           }
@@ -40,14 +42,13 @@ class RoleDefComponent extends React.Component<any> {
 }
 
 
-function mapStateToProps(state: any, ownProps:any) {
-
+function mapStateToProps(state: any, ownProps: any) {
   return {
     roleDefs: state.getRoleList.data
   };
 }
-// const  RoleListComponentWithRedux= connect(mapStateToProps)themr(ROLE, baseTheme)(RoleListComponent) as ThemedComponentClass<RoleListProp, RoleListState>;
-const mapDispatchToProps = (dispatch) => {
+
+const mapDispatchToProps: MapDispatchToProps<any, any> = (dispatch) => {
   return {
     actions: bindActionCreators(actions, dispatch),
   };
