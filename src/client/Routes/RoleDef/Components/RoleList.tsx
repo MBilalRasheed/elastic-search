@@ -121,8 +121,8 @@ class RoleListComponent extends React.Component<RoleListProp, RoleListState> {
     this.props.actions.showDeletedHandler(value)
   }
   // Callback function when any row gets selected
-  handleSelectRowCallback = (val: React.ReactText) => {
-    this.setState({ bulkAction: { selectedRow: [...this.state.bulkAction.selectedRow, val] } })
+  handleSelectRowCallback = (val: React.ReactText[]) => {
+    this.setState({ bulkAction: { selectedRow: val } })
   }
 
   // Toggle dropdowns present in this component
@@ -193,7 +193,7 @@ class RoleListComponent extends React.Component<RoleListProp, RoleListState> {
               <div className={searchFieldStyle}>
                 <TextField
                   label="Find a Role..."
-                  suffix={<Icon source="search" componentColor="inkLighter" onClick={this.filterResultsHandler.bind} />}
+                  suffix={<Icon source="search" componentColor="inkLighter" onClick={this.filterResultsHandler} />}
                   value={filterConfig.searchKey}
                   onChange={this.setFilterQuery}
                   

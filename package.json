@@ -27,6 +27,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "classnames": "^2.2.5",
     "cors": "^2.8.5",
+    "dotenv-webpack": "^8.0.1",
     "elasticsearch": "^16.7.1",
     "engage-ui": "latest",
     "enzyme": "^3.1.0",

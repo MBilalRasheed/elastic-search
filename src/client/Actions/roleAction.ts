@@ -1,5 +1,6 @@
 import { GET_ROLES } from 'ActionsTypes';
 import axios from 'axios';
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 export const getRoleList = () => {
     return async (dispatch) => {
@@ -38,12 +39,11 @@ export const filterResultsHandler = (searchItem: String) => {
         if(searchItem === '') {
             query = { match_all: {} }
         }
-        const response = await axios.post('http://localhost:3000/searchRoles', {
+        const response = await axios.post(`${baseUrl}/searchRoles`, {
             from: 0,
             size: 20,
             "query": query
         });
-        debugger
         if (response && response.data) {
             let hitsList = []
             const { hits: { hits: myHits } } = response.data
@@ -62,7 +62,7 @@ export const showDeletedHandler = (deleted: Boolean) => {
                 "entityState.itemID": { "query": deleted ? 7 : 5 }
             }
         }
-        const response = await axios.post('http://localhost:3000/searchRoles', {
+        const response = await axios.post(`${baseUrl}/searchRoles`, {
             from: 0,
             size: 20,
             "query": query

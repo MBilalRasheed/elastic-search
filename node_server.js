@@ -8,7 +8,6 @@ const elasticsearch = require('elasticsearch')
 const cors = require('cors')
 
 // Set up Elastic Search Client
-const bonsai_url = process.env.BONSAI_URL;
 const client = new elasticsearch.Client({
   host: 'https://pscdj5wv3i:cr9ziuto1y@role-test-6364081045.us-east-1.bonsaisearch.net:443',
   log: 'trace'

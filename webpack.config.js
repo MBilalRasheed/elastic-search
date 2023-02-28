@@ -9,7 +9,7 @@ const { CheckerPlugin } = require('awesome-typescript-loader');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
+const Dotenv = require('dotenv-webpack');
 const outputDirectory = 'dist';
 
 module.exports = {
@@ -55,6 +55,7 @@ module.exports = {
       filename: 'index.html',
       template: './src/client/index.html',
     }),
+    new Dotenv()
   ],
 
   module: {
@@ -79,6 +80,7 @@ module.exports = {
               modules: true,
               importLoaders: 1,
               sourceMap: false,
+              localIdentName: 'Bilal-[name]__[hash:base64:5]',
             }
           },
           {
