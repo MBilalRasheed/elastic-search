@@ -30,3 +30,7 @@ export interface IRoleFormValues {
   type: number;
   [key: string]: any;
 }
+export interface Dispatch {
+  type: String,
+  payload: any
+};

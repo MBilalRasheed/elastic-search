@@ -80,7 +80,7 @@ module.exports = {
               modules: true,
               importLoaders: 1,
               sourceMap: false,
-              localIdentName: 'Bilal-[name]__[hash:base64:5]',
+              localIdentName: 'Naveed-[name]__[hash:base64:5]',
             }
           },
           {
