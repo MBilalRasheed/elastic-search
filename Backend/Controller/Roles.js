@@ -1,4 +1,4 @@
-const client = require("../elasticConfig/index.js");
+const client = require("../ElasticConfig/index.js");
 
 function searchRoles(req, res, next) {
     try {

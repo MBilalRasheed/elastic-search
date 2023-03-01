@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const path = require('path');
-const { searchRoles } = require('./controller/Roles');
-const { fetch_fn } = require('./middlewares');
+const { searchRoles } = require('./Controller/Roles');
+const { fetch_fn } = require('./Middlewares');
 const cors = require('cors')
 
 // serve static files from public directory
